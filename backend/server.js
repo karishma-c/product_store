@@ -12,7 +12,8 @@ const app = express();
 app.use(express.json());
 
 //function to get the routes(endpoints)
-app.use("/api/products", productRoutes); //the endpoint should start from here -> /api/products and the remaining from the routes file eg: /api/products/ or /api/products/id 
+
+app.use("/api/products", productRoutes); //the endpoint in the routes files should be prefixed with -> /api/products for eg: /api/products/ or /api/products/id 
 
 //app listen to the port 
 app.listen(5000, () => {
