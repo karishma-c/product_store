@@ -2,13 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import Product from "./models/product.model.js";
+import mongoose from "mongoose";
 
 dotenv.config();
 
 //create a express app
 const app = express();
 
-app.use(express.json());  //allows to accept JSON data(middleware) in req.body
+app.use(express.json());  //allows to accept JSON data in req.body(middleware)
 
 //endpoint to get all the products
 app.get("/api/products", async (req,res) => {
@@ -36,6 +37,24 @@ app.post("/api/products", async (req,res) => {
     } catch (error) {
         console.error("Error in Create Product:", error.message);
         res.status(500).json({success: false, message: "Server Error"}) //status 500 -> internal server error
+    }
+})
+
+//endpoint to update a product
+//we can use put as well as patch both are same, put is used to update all fields, patch is used to update some of the fields
+app.put("/api/products/:id", async (req, res) => {
+    const {id} = req.params;
+    const product = req.body; //fields to be updated
+
+    if(!mongoose.Types.ObjectId.isValid(id)) { //to check whether the id is valid or not
+        return res.status(404).json({ success: false, message: "InvalidProduct Id" });
+    }
+
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(id, product, {new: true});
+        res.status(200).json({ success: true, data: updatedProduct });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Server Error" });
     }
 })
 
