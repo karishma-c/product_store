@@ -9,7 +9,7 @@ export const useProductStore = create((set) => ({
 		if (!newProduct.name || !newProduct.image || !newProduct.price) {
 			return { success: false, message: "Please fill in all fields." };
 		}
-		const res = await fetch("/api/products", {
+		const res = await fetch("https://project-backend-sage.vercel.app/", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -21,12 +21,12 @@ export const useProductStore = create((set) => ({
 		return { success: true, message: "Product created successfully" };
 	},
 	fetchProducts: async () => {
-		const res = await fetch("/api/products");
+		const res = await fetch("https://project-backend-sage.vercel.app/api/products");
 		const data = await res.json();
 		set({ products: data.data });
 	},
 	deleteProduct: async (pid) => {
-		const res = await fetch(`/api/products/${pid}`, {
+		const res = await fetch(`https://project-backend-sage.vercel.app/api/products/${pid}`, {
 			method: "DELETE",
 		});
 		const data = await res.json();
@@ -36,7 +36,7 @@ export const useProductStore = create((set) => ({
 		return { success: true, message: data.message };
 	},
 	updateProduct: async (pid, updateProduct) => {
-		const res = await fetch(`/api/products/${pid}`, {
+		const res = await fetch(`https://project-backend-sage.vercel.app/api/products/${pid}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
