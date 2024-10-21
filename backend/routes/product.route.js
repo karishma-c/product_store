@@ -3,6 +3,10 @@ import { getProducts, updateProduct, createProduct, deleteProduct } from "../con
 
 const router = express.Router();
 
+app.get("/", (req,res) => {
+    res.json("Hello");
+})
+
 //endpoint to get all the products
 router.get("/", getProducts)
 
