@@ -15,7 +15,7 @@ const __dirname = path.resolve();
 
 app.use(cors(
     {
-        origin: [],
+        origin: ["https://project-frontend-sandy.vercel.app/"],
         method: ["POST", "GET"],
         credentials: true
     }
