@@ -13,16 +13,11 @@ const PORT = process.env.PORT || 5000;
 
 const __dirname = path.resolve();
 
-app.use(cors(
-    {
-        origin: ["https://project-frontend-sandy.vercel.app/"],
-        method: ["POST", "GET"],
-        credentials: true
-    }
-));
-
 //allows to accept JSON data in req.body(middleware)
 app.use(express.json());
+
+app.use(cors());
+
 
 //function to get the routes(endpoints)
 app.use("/api/products", productRoutes); //the endpoint in the routes files should be prefixed with -> /api/products for eg: /api/products/ or /api/products/id 

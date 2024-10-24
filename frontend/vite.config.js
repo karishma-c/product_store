@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000"  //whenerever we visit /api it will be prefixed with http://localhost:5000
+        target: "http://localhost:5000",  //whenerever we visit /api it will be prefixed with http://localhost:5000
+        changeOrigin: true,
       }
     }
   }
