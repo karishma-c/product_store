@@ -38,3 +38,49 @@ app.listen(PORT, () => {
     console.log("Server started at http://localhost:" + PORT);
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "version": 2,
+// "builds": [
+// { 
+//   "src": "*.js", 
+//   "use": "@vercel/node" 
+// }
+// ],
+// "routes": [
+// {
+//     "src": "/(.*)",
+//     "dest": "/"
+// }
+// ]
