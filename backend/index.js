@@ -30,8 +30,6 @@ if(process.env.NODE_ENV === "production") {
     })
 }
 
-
-
 //app listen to the port 
 app.listen(PORT, () => {
     connectDB()
