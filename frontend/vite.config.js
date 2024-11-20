@@ -10,5 +10,8 @@ export default defineConfig({
         target: "http://localhost:5000",  //whenerever we visit /api it will be prefixed with http://localhost:5000
       }
     }
+  },
+  css: {
+    postcss: './postcss.config.js',
   }
 })
